@@ -1,0 +1,12 @@
+prefix=@prefix@
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: @PACKAGE_NAME@
+Description: psfs is a filesystem (based on FUSE) for accessing remote disk through piping server.
+Version: @VERSION@
+Requires: 
+Libs: -L${libdir} -lpsfs
+Cflags: -I${includedir}/psfs
+

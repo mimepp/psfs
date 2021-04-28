@@ -1,0 +1,14 @@
+INCLUDES = \
+	-Wall	\
+	 -g	\
+	-I$(abs_top_srcdir)/src
+
+PSFS_LIB_LDFLAGS = \
+	-ljson-c	\
+	-lglib-2.0	\
+	-lcurl		\
+	-loauth
+
+PSFS_BIN_LDFLAGS = \
+	$(abs_top_builddir)/src/libpsfs.la	\
+	$(PSFS_LIB_LDFLAGS)

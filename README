@@ -1,0 +1,62 @@
+psfs is a filesystem (based on FUSE) for accessing
+remote disk through piping server.
+The access is based on http request, so it could
+go through NAT.
+=====================================================
+(You can use it in commercial software, but please let me know.)
+This application is dedicated to my lovely son (Hean Yu).
+
+What's piping server?
+Infinitely transfer between every device over HTTP/HTTPS:
+https://github.com/nwtgck/piping-server
+
+How to build psfs from source code?
+=====================================================
+o download:
+  git clone https://github.com/mimepp/psfs.git
+
+o prepare before configure
+  please install depends, on ubuntu e.g.:
+  sudo apt-get install gtk-doc-tools libfuse-dev libjson-c-dev libcurl4-nss-dev
+
+  - json-c will be used to load/save psfs.conf and psfs_oauth.json
+  - glib will be used for hash table
+
+o configure:
+  cd psfs
+  ./autogen.sh
+  ./configure
+  (run ./configure --help for more options)
+
+o build:
+  make
+
+o install (need root)
+  make install
+
+o prepare before run
+  please edit psfs.conf as you wish, e.g.:
+{
+        "piping_server_link_prefix": "https://ppng.io",
+        "piping_server_link_path": "xxxx",
+        "mount_point": "/tmp/psfs",
+        "log_path": "/tmp"
+}
+  "piping_server_link_prefix" is the http link of piping server
+  "piping_server_link_path" is communication path for piping server
+  "mount_point" is the mount point which you want mount psfs to
+  "log_path" is the path which will be used in debug mode.
+
+o run:
+  mkdir /tmp/psfs
+  cd src/
+  ./psfs -c ../psfs.conf
+
+How to build and run psfs on target board.
+=====================================================
+TODO
+
+Where can I get more information:
+=====================================================
+BLOG: http://blog.csdn.net/mimepp
+Still have problems please send email to yut616@gmail.com
